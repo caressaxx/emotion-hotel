@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClearMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,22 +22,20 @@
     }
 
     html {
-      min-height: 100%;
-      background: linear-gradient(to bottom, #2d1010 0%, #1a0f0f 14%, #788899 40%, #8B9BAF 55%, #B8967A 100%);
-      background-attachment: fixed;
+      height: auto;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
-      background: transparent;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0d0d0d;
       color: var(--w95);
-      min-height: 100vh;
-      overflow-x: hidden;
+      min-height: 100%;
+      overflow-y: auto;
     }
 
     #app {
       max-width: 430px; margin: 0 auto;
-      min-height: 100vh; display: flex; flex-direction: column;
+      min-height: 100vh; padding: 0;
     }
 
     #scroll-area {
@@ -44,7 +45,7 @@
     #scroll-area::-webkit-scrollbar { display: none; }
 
     .stack {
-      padding: 0 18px 32px;
+      padding: 0 18px 110px;
       display: flex; flex-direction: column; gap: 12px;
     }
 
@@ -65,11 +66,15 @@
       padding: 24px;
     }
     .header-sub {
-      font-size: 12px; font-weight: 400; letter-spacing: 1.8px;
-      text-transform: uppercase; color: var(--w55); margin-bottom: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; font-weight: 300; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.60); margin-bottom: 6px;
     }
-    .header-name { font-size: 28px; font-weight: 200; letter-spacing: -0.5px; color: var(--w95); }
-    .header-room { font-size: 11px; font-weight: 400; letter-spacing: 1.6px; color: var(--w55); margin-top: 3px; text-transform: uppercase; }
+    .header-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 200; letter-spacing: 0.05em; color: #fff;
+    }
+    .header-room { font-size: 12px; font-weight: 300; letter-spacing: 0.25em; color: rgba(255,255,255,0.45); margin-top: 5px; text-transform: uppercase; }
     .avatar {
       width: 38px; height: 38px; border-radius: 50%;
       background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
@@ -90,10 +95,12 @@
 
     .emotion-chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .emotion-chip {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 15px; border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.20);
-      background: transparent;
+      display: inline-flex; align-items: center; flex-direction: row;
+      white-space: nowrap; writing-mode: horizontal-tb;
+      flex-shrink: 0; min-width: 80px; height: 36px;
+      padding: 0 16px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08);
       color: var(--w75); font-size: 13px; font-weight: 400;
       cursor: pointer; font-family: inherit;
       transition: border-color .2s, background .2s, color .2s;
@@ -216,24 +223,42 @@
 
     /* ── Bottom nav ─── */
     #bottom-nav {
-      position: sticky; bottom: 0;
-      background: rgba(255,255,255,0.10); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255,255,255,0.18);
-      display: flex; justify-content: space-around;
-      padding: 13px 0 22px;
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: fit-content;
+      min-width: 280px;
+      padding: 8px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.20);
     }
     .nav-btn {
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
-      background: none; border: none; cursor: pointer;
-      padding: 4px 20px; font-family: inherit;
+      width: 56px; height: 56px; border-radius: 999px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 3px; cursor: pointer;
+      background: none; border: none; font-family: inherit;
+      transition: background .2s;
     }
     .nav-icon {
       display: flex; align-items: center; justify-content: center;
-      color: #fff; opacity: 0.30; transition: opacity .2s;
+      color: rgba(255,255,255,0.55); transition: color .2s;
     }
-    .nav-label { font-size: 9px; font-weight: 400; letter-spacing: 0.6px; color: var(--w55); transition: color .2s; }
-    .nav-btn.active .nav-icon  { opacity: 0.90; }
-    .nav-btn.active .nav-label { color: #fff; }
+    .nav-label {
+      font-size: 10px; font-weight: 300; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.45); transition: color .2s;
+    }
+    .nav-btn.active { background: rgba(255,255,255,0.18); }
+    .nav-btn.active .nav-icon  { color: rgba(255,255,255,0.95); }
+    .nav-btn.active .nav-label { color: rgba(255,255,255,0.95); }
 
     /* ── Garden ─── */
     .garden-caption  { font-size: 12px; color: rgba(255,255,255,0.70); text-align: center; margin-top: 14px; letter-spacing: 0.3px; }
@@ -244,65 +269,119 @@
     .milestone-label { font-size: 10px; letter-spacing: 0.5px; }
     .garden-note     { font-size: 12px; color: rgba(255,255,255,0.50); text-align: center; margin-top: 16px; line-height: 1.6; letter-spacing: 0.2px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; }
 
-    /* ── Room hero ─── */
-    .room-hero {
+    /* ── Full-screen hero layout ─── */
+    .page-hero {
+      height: 100vh;
       position: relative;
-      height: 420px;
-      margin-left: -18px; margin-right: -18px;
       background-image: url('room-default.jpg.PNG');
       background-size: cover;
       background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
-    .room-hero::before {
+    .page-hero::before {
       content: '';
-      position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background:
-        linear-gradient(to bottom, rgba(15,8,20,0.85)   0%, transparent 35%),
-        linear-gradient(to top,    rgba(139,154,175,0.9) 0%, transparent 40%),
-        linear-gradient(to right,  rgba(15,8,20,0.40)   0%, transparent 25%),
-        linear-gradient(to left,   rgba(15,8,20,0.40)   0%, transparent 25%);
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 0; pointer-events: none;
     }
-    .rain-container { position: absolute; inset: 0; pointer-events: none; overflow: hidden; display: none; z-index: 2; }
-    .rain-drop {
-      position: absolute; top: -30px; width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(200,215,255,0.35));
-      border-radius: 100px;
-      animation: rain-fall linear infinite;
+    .hero-top {
+      position: absolute;
+      top: 0; left: 0;
+      padding: 48px 24px 0;
+      z-index: 10;
+      pointer-events: none;
     }
-    @keyframes rain-fall {
-      0%   { transform: translateY(0); opacity: 0; }
-      10%  { opacity: 0.3; }
-      90%  { opacity: 0.22; }
-      100% { transform: translateY(450px); opacity: 0; }
+    .hotel-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 300; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.50); margin-bottom: 8px;
+    }
+    .hotel-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 200; letter-spacing: 0.05em;
+      color: #fff; line-height: 1.1;
+    }
+    .hero-center {
+      position: relative; z-index: 2;
+      width: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 24px 36px;
+    }
+    .today-tag {
+      display: inline-block; padding: 5px 18px; border-radius: 100px;
+      background: rgba(255,255,255,0.15);
+      font-size: 12px; font-weight: 300; letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.75); margin-bottom: 22px;
+    }
+    .today-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 200; letter-spacing: 0.02em;
+      color: #fff; line-height: 1.45; margin-bottom: 14px;
+    }
+    .today-sub {
+      font-size: 13px; font-weight: 300; letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.60); line-height: 1.65; margin-bottom: 32px;
+    }
+    .today-cta {
+      padding: 13px 38px; border-radius: 100px;
+      background: #fff; color: rgba(15,8,12,0.90);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 400; letter-spacing: 0.05em;
+      border: none; cursor: pointer; transition: opacity 0.2s;
+    }
+    .today-cta:hover { opacity: 0.85; }
+    .chips-zone {
+      margin-top: 24px;
+      width: 100%;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      padding: 0 24px;
+    }
+    .chips-zone::-webkit-scrollbar { display: none; }
+    .chips-zone .emotion-chips {
+      display: flex; flex-wrap: nowrap;
+      gap: 10px; width: max-content;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
 
 <div id="app">
-  <div id="scroll-area">
-    <div class="stack">
 
-      <!-- Room hero -->
-      <div class="room-hero" id="window-frame">
-        <div class="rain-container" id="rain-container"></div>
-        <header class="header">
-          <div>
-            <p class="header-sub">歡迎入住</p>
-            <h1 class="header-name">Heart Inn</h1>
-            <p class="header-room">Room 525</p>
-          </div>
-          <div class="avatar">CA</div>
-        </header>
+  <!-- Full-screen hero -->
+  <div class="page-hero">
+
+    <!-- Hotel identity: floats absolute top-left over image -->
+    <div class="hero-top">
+      <p class="hotel-label">歡迎入住</p>
+      <h1 class="hotel-name">Heart Inn</h1>
+    </div>
+
+    <!-- Center: headline + chips -->
+    <div class="hero-center">
+      <h2 class="today-headline">今晚，帶著什麼<br>心情入住？</h2>
+      <p class="today-sub">選擇你的心情，開始今晚的入住</p>
+      <div class="chips-zone">
+        <div class="emotion-chips" id="emotion-chips"></div>
       </div>
+    </div>
+
+  </div>
+
+  <!-- Scrollable content below hero -->
+  <div class="stack">
 
       <!-- Check-in -->
       <div>
         <div class="card" id="checkin-card">
           <p class="checkin-eyebrow">今日入住</p>
           <p class="checkin-question">您今晚入住<br>哪種心情？</p>
-          <div class="emotion-chips" id="emotion-chips"></div>
+          <div class="emotion-chips" id="emotion-chips-old"></div>
           <button class="checkin-submit" id="checkin-submit" onclick="submitCheckin()">
             確認入住
           </button>
@@ -498,7 +577,6 @@
         </div>
       </div>
 
-    </div>
   </div>
 
   <!-- Bottom nav -->
@@ -512,8 +590,8 @@
       <span class="nav-label">入住紀錄</span>
     </button>
     <button class="nav-btn" onclick="setNav(this)">
-      <span class="nav-icon" id="nav-journal"></span>
-      <span class="nav-label">留言本</span>
+      <span class="nav-icon" id="nav-garden"></span>
+      <span class="nav-label">空中花園</span>
     </button>
     <button class="nav-btn" onclick="setNav(this)">
       <span class="nav-icon" id="nav-profile"></span>
@@ -557,30 +635,27 @@
   };
 
   const nav = (inner) =>
-    `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+    `<svg width="24" height="24" viewBox="0 0 22 22" fill="none"
        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 
   const NAV_ICONS = {
     home: nav(`
-      <path d="M2 20V11L11 4L20 11V20" stroke-width="1.4"/>
-      <path d="M8 20v-5h6v5" stroke-width="1.4"/>
-      <line x1="1" y1="20" x2="21" y2="20" stroke-width="1.2"/>
-      <line x1="16" y1="8" x2="16" y2="5.5" stroke-width="1" opacity="0.55"/>`),
+      <path d="M3 21V11L11 4L19 11V21" stroke-width="1.5"/>
+      <path d="M8 21V16a3 3 0 0 1 6 0v5" stroke-width="1.5"/>
+      <line x1="1" y1="21" x2="21" y2="21" stroke-width="1.5"/>`),
     history: nav(`
-      <circle cx="11" cy="11" r="9"   stroke-width="1.4"/>
-      <circle cx="11" cy="11" r="5.5" stroke-width="1.1"/>
-      <circle cx="11" cy="11" r="2.5" stroke-width="1"/>
-      <circle cx="11" cy="11" r="0.85" fill="currentColor" stroke="none"/>`),
-    journal: nav(`
-      <path d="M11 2C7.5 2 5 6.5 5 11 5 16 11 20 11 20 11 20 17 16 17 11 17 6.5 14.5 2 11 2Z"
-            stroke-width="1.4"/>
-      <line x1="11" y1="2"  x2="11" y2="20"  stroke-width="1.1"/>
-      <line x1="11" y1="9"  x2="14" y2="6.5" stroke-width="0.9" opacity="0.4"/>
-      <line x1="11" y1="13" x2="8"  y2="10.5" stroke-width="0.9" opacity="0.4"/>`),
+      <rect x="3" y="5" width="16" height="15" rx="2" stroke-width="1.5"/>
+      <path d="M7 3v2M15 3v2" stroke-width="1.5"/>
+      <path d="M3 9h16" stroke-width="1.5"/>
+      <path d="M15.5 15a2.5 2.5 0 1 1-2.2-3.8 2 2 0 0 0 2.2 3.8Z" stroke-width="1.2"/>`),
+    garden: nav(`
+      <line x1="11" y1="20" x2="11" y2="10" stroke-width="1.5"/>
+      <path d="M11 16C11 16 7 13 7 9a4 4 0 0 1 8 0c0 4-4 7-4 7Z" stroke-width="1.5"/>
+      <path d="M11 13C12.5 11.5 15 10.5 17 8.5" stroke-width="1.3" opacity="0.7"/>
+      <line x1="6" y1="20" x2="16" y2="20" stroke-width="1.5"/>`),
     profile: nav(`
-      <path d="M1 17L7 8.5 12 14 15.5 9 21 17" stroke-width="1" opacity="0.30"/>
-      <circle cx="11" cy="7.5" r="3.5" stroke-width="1.4"/>
-      <path d="M4 20C4 17 7.5 14.5 11 14.5 14.5 14.5 18 17 18 20" stroke-width="1.4"/>`),
+      <circle cx="11" cy="7" r="4" stroke-width="1.5"/>
+      <path d="M4 21c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke-width="1.5"/>`),
   };
 
   const res = (inner) =>
@@ -606,12 +681,12 @@
 
   // ── Data ──────────────────────────────────────────────────────────────────
   const EMOTIONS = [
-    { id: 'calm',      label: '寧靜客房' },
-    { id: 'focused',   label: '山景套房' },
-    { id: 'anxious',   label: '風暴特房' },
-    { id: 'tired',     label: '落葉單人房' },
-    { id: 'motivated', label: '日出豪華房' },
-    { id: 'stressed',  label: '迷霧標準房' },
+    { id: 'calm',      label: '平靜' },
+    { id: 'focused',   label: '專注' },
+    { id: 'anxious',   label: '焦慮' },
+    { id: 'tired',     label: '疲憊' },
+    { id: 'motivated', label: '充滿動力' },
+    { id: 'stressed',  label: '壓力' },
   ];
 
   const WEEKLY_DATA = [
@@ -655,7 +730,7 @@
   function renderNavIcons() {
     document.getElementById('nav-home').innerHTML    = NAV_ICONS.home;
     document.getElementById('nav-history').innerHTML = NAV_ICONS.history;
-    document.getElementById('nav-journal').innerHTML = NAV_ICONS.journal;
+    document.getElementById('nav-garden').innerHTML  = NAV_ICONS.garden;
     document.getElementById('nav-profile').innerHTML = NAV_ICONS.profile;
   }
 
@@ -947,7 +1022,6 @@
   renderChart();
   renderInsight();
   renderResources();
-  updateWindow(null);
 </script>
 </body>
 </html>
