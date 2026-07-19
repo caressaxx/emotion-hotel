@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///Users/caressalin/Downloads/heart-inn-v2_2.html -->
+<!-- saved from url=(0054)file:///Users/caressalin/Downloads/heart-inn-v2_4.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClearMind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./heart-inn-v2_files/css2" rel="stylesheet">
+  <link href="./heart-inn-v2_4_files/css2" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -469,6 +469,7 @@
         min-height: 100vh;
         padding: 40px 0;
         margin: 0;
+        overflow: hidden;
       }
       /* 桌面背景光暈 */
       body::before {
@@ -613,7 +614,7 @@
 </head>
 <body>
 
-<div id="app">
+<div id="app" style="zoom: 0.677725;">
   <div id="sky-bg"></div>
   <canvas id="star-canvas"></canvas>
 
@@ -762,17 +763,17 @@
       <div class="insight-body" style="flex-direction:column;align-items:flex-start;gap:10px">
         <!-- icon + tag 同一行 -->
         <div style="display:flex;align-items:center;gap:10px">
-          <div class="insight-icon" id="insight-icon" style="margin:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="18" x2="22" y2="18" stroke-width="1.5"></line><path d="M6 18A6 6 0 0 1 18 18" stroke-width="1.5"></path><line x1="12" y1="11" x2="12" y2="8" stroke-width="1.4"></line><line x1="6.5" y1="13.5" x2="4.8" y2="11.8" stroke-width="1.3"></line><line x1="17.5" y1="13.5" x2="19.2" y2="11.8" stroke-width="1.3"></line></svg></div>
-          <span class="insight-tag" id="insight-tag" style="color: rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.12);">入住習慣</span>
+          <div class="insight-icon" id="insight-icon" style="margin:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 7 5 12 5 18 12 22 12 22 12 22 19 18 19 12 19 7 16 2 12 2Z" stroke-width="1.5"></path><line x1="12" y1="2" x2="12" y2="22" stroke-width="1.2"></line></svg></div>
+          <span class="insight-tag" id="insight-tag" style="color: rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.12);">房務提醒</span>
         </div>
         <!-- headline + body 在下方 -->
         <div style="width:100%">
-          <p class="insight-headline" id="insight-headline">早晨入住，旅程更美好</p>
-          <p class="insight-text" id="insight-text">在早上9點前辦理入住的房客，下午的幸福感高出23%。</p>
+          <p class="insight-headline" id="insight-headline">您的專注在週三達到高峰</p>
+          <p class="insight-text" id="insight-text">建議將重要事項安排在週三，讓旅程更順心。</p>
         </div>
       </div>
       <div class="insight-nav" style="justify-content:center;">
-        <div class="dot-indicators" id="insight-dots"><div class="dot" onclick="goInsight(0)"></div><div class="dot active" onclick="goInsight(1)"></div><div class="dot" onclick="goInsight(2)"></div></div>
+        <div class="dot-indicators" id="insight-dots"><div class="dot active" onclick="goInsight(0)"></div><div class="dot" onclick="goInsight(1)"></div><div class="dot" onclick="goInsight(2)"></div></div>
       </div>
     </div>
 
@@ -2006,6 +2007,19 @@
     var inp = document.getElementById('lg-input');
     if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') addLgItem(); });
   });
+
+
+  // ── Desktop phone scaler ───────────────────────────────────────────────────
+  function scalePhone() {
+    if (window.innerWidth < 500) { document.getElementById('app').style.zoom = ''; return; }
+    var pad = 80;
+    var scaleX = (window.innerWidth - pad) / 390;
+    var scaleY = (window.innerHeight - pad) / 844;
+    var scale = Math.min(scaleX, scaleY, 1);
+    document.getElementById('app').style.zoom = scale;
+  }
+  window.addEventListener('resize', scalePhone);
+  scalePhone();
 
   // ── Boot ──────────────────────────────────────────────────────────────────
   renderNavIcons();
