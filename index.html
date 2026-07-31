@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///Users/caressalin/Downloads/heart-inn-v2_33.html -->
+<!-- saved from url=(0055)file:///Users/caressalin/Downloads/heart-inn-v2_64.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@
     #scroll-area::-webkit-scrollbar { display: none; }
 
     .stack {
-      padding: 0 18px 110px;
+      padding: 0 18px 200px;
       display: flex; flex-direction: column; gap: 12px;
     }
 
@@ -142,13 +142,44 @@
       border: none; border-radius: 0;
       padding: 16px 10px; text-align: center;
     }
-    .stat-value { font-size: 22px; font-weight: 200; letter-spacing: -0.5px; color: var(--w95); }
+    .stat-value { font-size: 22px; font-weight: 200; letter-spacing: -0.5px; color: var(--w95); min-height: 28px; display: flex; align-items: center; justify-content: center; }
+    .stat-value.stat-value-text { font-size: 15px; font-weight: 400; letter-spacing: 0; line-height: 1.3; }
     .stat-unit  { font-size: 11px; color: var(--w55); font-weight: 400; }
     .stat-label { font-size: 10px; color: var(--w55); margin-top: 5px; letter-spacing: 0.4px; }
 
     /* ── Streak ─── */
     .streak-inner { display: flex; align-items: center; justify-content: space-between; }
     .streak-label { font-size: 11px; color: var(--w55); letter-spacing: 1.6px; text-transform: uppercase; margin-bottom: 5px; }
+
+    .week-strip{display:flex;justify-content:space-between;margin:14px 0 18px}
+    .week-strip-day{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 4px;border-radius:14px;flex:1}
+    .week-strip-day.today{background:rgba(255,255,255,.14)}
+    .week-strip-num{font-size:15px;color:rgba(255,255,255,.82);font-family:'DM Sans',sans-serif;font-weight:500}
+    .week-strip-day.today .week-strip-num{color:#fff}
+    .week-strip-dow{font-size:9px;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;letter-spacing:.05em}
+    .week-strip-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.2);margin-top:1px}
+    .week-strip-dot.has{background:rgba(255,255,255,.85)}
+    .profile-month-label{font-size:20px;color:rgba(255,255,255,.85);font-family:'DM Sans',sans-serif;font-weight:500;margin:0 0 4px}
+
+    .mood-hero-card{position:relative;overflow:hidden;border-radius:20px;padding:24px 22px;margin-bottom:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background 1s ease}
+    .mood-hero-flower{position:absolute;right:-62px;bottom:-72px;width:190px;height:190px;color:rgba(255,255,255,.5);opacity:.4;filter:blur(5px);pointer-events:none;transition:color 1s ease,opacity 1s ease}
+    .mood-hero-label{position:relative;z-index:1;font-size:12px;color:rgba(255,255,255,.78);font-family:'DM Sans',sans-serif;margin:0 0 8px}
+    .mood-hero-word{position:relative;z-index:1;font-size:32px;color:#fff;font-family:'Cormorant Garamond',serif;font-weight:400;margin:0 0 6px;line-height:1.2}
+    .mood-hero-date{position:relative;z-index:1;font-size:12px;color:rgba(255,255,255,.62);font-family:'DM Sans',sans-serif}
+
+    .timeline-list{display:flex;flex-direction:column;margin-bottom:12px}
+    .timeline-row{display:flex;gap:12px;align-items:stretch}
+    .timeline-dates{width:44px;flex-shrink:0;padding-top:14px;text-align:right}
+    .timeline-date-main{display:block;font-size:12px;color:rgba(255,255,255,.7);font-family:'DM Sans',sans-serif}
+    .timeline-connector{width:14px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:18px}
+    .timeline-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.85);flex-shrink:0}
+    .timeline-line{flex:1;width:1px;background:rgba(255,255,255,.18);margin-top:2px}
+    .timeline-row:last-child .timeline-line{display:none}
+    .timeline-card{flex:1;display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);margin-bottom:14px}
+    .timeline-icon-circle{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+    .timeline-title{font-size:13px;color:rgba(255,255,255,.9);font-family:'DM Sans',sans-serif;font-weight:500}
+    .timeline-sub{font-size:11px;color:rgba(255,255,255,.48);font-family:'DM Sans',sans-serif;margin-top:2px}
+    .timeline-empty{text-align:center;color:rgba(255,255,255,.35);font-size:13px;font-family:'DM Sans',sans-serif;padding:20px 0}
     .streak-count { font-size: 21px; font-weight: 200; color: var(--w95); }
     .streak-days  { display: flex; gap: 7px; }
     .streak-day {
@@ -390,6 +421,7 @@
     .orb-nav-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.65);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
     .orb-title{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.55);letter-spacing:.06em}
     .orb-headline{text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:rgba(255,255,255,.9);margin:14px 0 0;letter-spacing:.02em}
+    .orb-glow{position:absolute;inset:-15%;z-index:-1;background:radial-gradient(circle at 50% 42%, rgba(160,160,160,.16) 0%, rgba(160,160,160,.07) 42%, transparent 72%);filter:blur(55px);transition:background 1s ease;pointer-events:none}
     .orb-label{text-align:center;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin:0 0 16px;letter-spacing:.02em}
     .orb-slider-wrap{padding:16px 32px 16px}
     .orb-slider-labels{display:flex;justify-content:space-between;padding:0 34px;margin-bottom:24px}
@@ -518,10 +550,13 @@
       }
       /* iPhone frame */
       #app {
-        position: relative !important;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
         width: 390px !important;
         min-width: 390px;
         height: 844px !important;
+        min-height: 844px !important;
         border-radius: 50px !important;
         overflow: hidden !important;
         flex-shrink: 0;
@@ -563,7 +598,8 @@
       #lg-overlay,
       #lg-book-overlay,
       #lz-overlay,
-      #lf-overlay {
+      #lf-overlay,
+      #practice-overlay {
         position: absolute !important;
         width: 390px !important;
         height: 844px !important;
@@ -588,12 +624,19 @@
         bottom: 20px !important;
         /* 保留原本 left:50% + transform:translateX(-50%) 置中邏輯 */
       }
-      /* Views 不超出框 */
+      /* Views 不超出框，並可在框內完整捲動到底（絕對定位精確貼齊手機框，不受文件流偏移影響）*/
       .stack {
+        position: absolute !important;
+        inset: 0 !important;
         width: 390px !important;
         max-width: 390px !important;
+        height: auto !important;
+        max-height: none !important;
         overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
       }
+      .stack::-webkit-scrollbar { display: none; }
     }
 
     /* ── Door welcome option hover states ───────────────────────────────── */
@@ -660,6 +703,28 @@
     .lz-card-emotion{font-size:17px;color:rgba(255,255,255,.94);font-family:'DM Sans',sans-serif;font-weight:500}
     .lz-card-wash{font-size:11px;color:rgba(255,255,255,.55);font-family:'DM Sans',sans-serif;letter-spacing:.03em}
     .lz-card-duration{font-size:10px;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;letter-spacing:.02em;margin-top:2px}
+
+    /* ── 冥想/呼吸練習 overlay ─────────────────────────────────────────────── */
+    #practice-overlay{position:fixed;inset:0;z-index:9999;background:#0a0812;display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .4s ease,visibility .4s;pointer-events:none}
+    .practice-progress-track{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,.1);z-index:1}
+    .practice-progress-fill{height:100%;width:0%;background:rgba(255,255,255,.65)}
+    #practice-overlay.visible{visibility:visible;opacity:1;pointer-events:all}
+    .practice-header{display:flex;align-items:center;justify-content:space-between;padding:52px 20px 0;flex-shrink:0}
+    .practice-title{color:rgba(255,255,255,.7);font-size:13px;letter-spacing:.06em;font-family:'DM Sans',sans-serif}
+    .practice-stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 32px;text-align:center}
+    .practice-intro{font-size:16px;color:rgba(255,255,255,.8);font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.8;margin-bottom:36px;max-width:280px}
+    .practice-circle-wrap{width:180px;height:180px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:28px}
+    .practice-circle{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.35), rgba(255,255,255,.08) 70%);transition:transform 4s ease-in-out;transform:scale(1)}
+    .practice-circle.inhale{transform:scale(1.9)}
+    .practice-circle.exhale{transform:scale(1)}
+    .practice-cue{font-size:15px;color:rgba(255,255,255,.85);font-family:'DM Sans',sans-serif;letter-spacing:.04em;min-height:20px}
+    .practice-closing{display:none;font-size:17px;color:rgba(255,255,255,.9);font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.9;max-width:280px}
+    #practice-overlay.done .practice-closing{display:block}
+    #practice-overlay.done .practice-intro,
+    #practice-overlay.done .practice-circle-wrap,
+    #practice-overlay.done .practice-cue{display:none}
+    .practice-done-btn{display:none;margin-top:32px;padding:13px 34px;border-radius:100px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);color:#fff;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif}
+    #practice-overlay.done .practice-done-btn{display:inline-block}
 
     /* ── 失物招領 overlay（沿用情緒洗衣房的內容樣式） ────────────────────────── */
     #lf-overlay{position:fixed;inset:0;z-index:9994;background:#0c0918;display:flex;flex-direction:column;visibility:hidden;opacity:0;transition:opacity .4s ease,visibility .4s;pointer-events:none}
@@ -753,7 +818,7 @@
 </head>
 <body>
 
-<div id="app" style="zoom: 0.677725;">
+<div id="app" style="transform: translate(-50%, -50%) scale(0.677725);">
   <div id="sky-bg" style="opacity: 0; display: none; background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), linear-gradient(175deg, rgb(14, 58, 120) 0%, rgb(26, 100, 192) 42%, rgb(46, 138, 232) 72%, rgb(74, 170, 248) 100%);">
     <div id="moon-el" style="position: absolute; top: 14%; right: 16%; width: 32px; height: 32px; border-radius: 50%; background: transparent; box-shadow: rgba(255, 245, 210, 0.88) 9px -3px 0px 3px; opacity: 0; transition: opacity 1.5s; pointer-events: none;"></div>
   </div>
@@ -765,13 +830,12 @@
 
     <!-- Hotel identity: floats absolute top-left over image -->
     <div class="hero-top">
-      <p class="hotel-label">Caressa 歡迎入住</p>
       <h1 class="hotel-name">Heart Inn</h1>
     </div>
 
     <!-- Center: headline + chips -->
     <div class="hero-center">
-      <h2 class="today-headline">晚安，Caressa<br>今晚已經入住了</h2>
+      <h2 class="today-headline">晚安 Caressa</h2>
       <p class="today-sub">想重新選擇心情，也可以再開一次門</p>
       <button class="today-cta" onclick="showOrbScreen()">調整今晚的心情</button>
     </div>
@@ -830,7 +894,7 @@
           <path d="M238 127 Q237 122 238 119" fill="none" stroke="rgba(255,255,255,0.24)" stroke-width="0.9" stroke-linecap="round"></path>
           <path d="M291 130 Q298 124 306 123 Q314 124 321 130Z" fill="rgba(95,68,42,0.28)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8" stroke-linejoin="round"></path>
         </svg>
-        <p class="garden-caption">已連續入住 5 晚・花園正在生長中</p>
+        <p class="garden-caption" id="garden-caption">已連續入住 2 晚・花園正在生長中</p>
         <div class="milestones">
           <div class="milestone">
             <span class="milestone-icon">🌱</span>
@@ -884,7 +948,7 @@
       <circle cx="11" cy="7.5" r="1" fill="currentColor" stroke="none"></circle>
       <path d="M11 11.5a2.5 2.5 0 0 1 2.5 1.5" stroke-width="1.2" opacity="0.55" stroke-linecap="round"></path></svg></span>
         <span class="resource-label">情緒洗衣房</span>
-        <span class="resource-desc">洗去負面情緒，還你乾淨心情</span>
+        <span class="resource-desc">洗去你的負面情緒</span>
       </button>
       <button class="resource-btn" onclick="openLostFound()">
         <span class="resource-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -893,88 +957,34 @@
       <path d="M17 8v4" stroke-width="1.5" stroke-linecap="round"></path>
       <path d="M20 8.5v3" stroke-width="1.2" stroke-linecap="round" opacity="0.5"></path></svg></span>
         <span class="resource-label">失物招領</span>
-        <span class="resource-desc">提醒你帶走昨天的笑容</span>
+        <span class="resource-desc">為自己找回一點鼓勵與力量</span>
       </button></div>
   </div>
 
   <!-- ── VIEW: 房客資料 ──────────────────────────────────────────────── -->
   <div id="view-profile" class="stack" style="display: none; padding: 24px 20px;">
 
-    <!-- 旅館小語 card（無標題）-->
-    <div class="card" style="background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px;margin-bottom:0;padding:18px 20px">
-      <div class="insight-body" style="flex-direction:column;align-items:flex-start;gap:10px">
-        <!-- icon + tag 同一行 -->
-        <div style="display:flex;align-items:center;gap:10px">
-          <div class="insight-icon" id="insight-icon" style="margin:0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="18" x2="22" y2="18" stroke-width="1.5"></line><path d="M6 18A6 6 0 0 1 18 18" stroke-width="1.5"></path><line x1="12" y1="11" x2="12" y2="8" stroke-width="1.4"></line><line x1="6.5" y1="13.5" x2="4.8" y2="11.8" stroke-width="1.3"></line><line x1="17.5" y1="13.5" x2="19.2" y2="11.8" stroke-width="1.3"></line></svg></div>
-          <span class="insight-tag" id="insight-tag" style="color: rgba(255, 255, 255, 0.8); background: rgba(255, 255, 255, 0.12);">入住習慣</span>
-        </div>
-        <!-- headline + body 在下方 -->
-        <div style="width:100%">
-          <p class="insight-headline" id="insight-headline">早晨入住，旅程更美好</p>
-          <p class="insight-text" id="insight-text">在早上9點前辦理入住的房客，下午的幸福感高出23%。</p>
-        </div>
-      </div>
-      <div class="insight-nav" style="justify-content:center;">
-        <div class="dot-indicators" id="insight-dots"><div class="dot" onclick="goInsight(0)"></div><div class="dot active" onclick="goInsight(1)"></div><div class="dot" onclick="goInsight(2)"></div></div>
-      </div>
+    <!-- 左上角月份年份 -->
+    <p class="profile-month-label" id="profile-month-label">2026 8月</p>
+
+    <!-- 週曆選日條（陽春版，純視覺） -->
+    <div class="week-strip" id="week-strip"><div class="week-strip-day"><span class="week-strip-num">27</span><span class="week-strip-dow">MON</span><span class="week-strip-dot has"></span></div><div class="week-strip-day"><span class="week-strip-num">28</span><span class="week-strip-dow">TUE</span><span class="week-strip-dot"></span></div><div class="week-strip-day"><span class="week-strip-num">29</span><span class="week-strip-dow">WED</span><span class="week-strip-dot"></span></div><div class="week-strip-day"><span class="week-strip-num">30</span><span class="week-strip-dow">THU</span><span class="week-strip-dot has"></span></div><div class="week-strip-day today"><span class="week-strip-num">31</span><span class="week-strip-dow">FRI</span><span class="week-strip-dot has"></span></div><div class="week-strip-day"><span class="week-strip-num">1</span><span class="week-strip-dow">SAT</span><span class="week-strip-dot"></span></div><div class="week-strip-day"><span class="week-strip-num">2</span><span class="week-strip-dow">SUN</span><span class="week-strip-dot"></span></div></div>
+
+    <!-- 心情大卡片：最近一次的心情描述詞 -->
+    <div class="mood-hero-card" id="mood-hero-card" style="background: radial-gradient(circle at 88% 92%, rgba(132, 199, 192, 0.22) 0%, rgba(255, 255, 255, 0.05) 55%);">
+      <svg class="mood-hero-flower" id="mood-hero-flower" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" style="color: rgb(132, 199, 192); opacity: 0.4;">
+        <path fill="currentColor" d="M 114.4 170.7 C 113.1 170.2 111.8 169.6 110.5 169.0 C 109.2 168.4 108.8 166.6 106.8 166.9 C 104.7 167.2 103.1 167.8 98.2 170.9 C 93.3 174.1 84.1 182.0 77.4 185.6 C 70.7 189.2 63.0 192.0 58.0 192.5 C 53.0 193.0 48.7 191.4 47.4 188.5 C 46.1 185.7 47.3 180.4 50.3 175.5 C 53.2 170.5 59.3 164.0 65.4 158.9 C 71.4 153.7 82.8 147.7 86.5 144.5 C 90.2 141.3 87.4 141.2 87.5 139.7 C 87.5 138.2 86.9 136.9 86.7 135.5 C 86.6 134.1 86.5 132.6 86.4 131.2 C 86.4 129.8 86.4 128.3 86.5 126.9 C 86.6 125.5 86.8 124.1 87.0 122.7 C 87.3 121.3 89.6 120.7 87.9 118.5 C 86.3 116.3 82.0 113.8 76.9 109.7 C 71.9 105.6 62.5 99.1 57.5 93.8 C 52.6 88.5 48.4 82.2 47.3 78.0 C 46.1 73.7 47.5 69.8 50.6 68.4 C 53.7 66.9 59.8 67.3 65.9 69.3 C 71.9 71.3 80.4 76.1 86.8 80.3 C 93.3 84.5 101.2 92.5 104.8 94.4 C 108.4 96.4 107.2 92.8 108.4 92.1 C 109.6 91.4 110.9 90.8 112.2 90.2 C 113.5 89.6 114.9 89.1 116.2 88.6 C 117.6 88.2 118.9 87.8 120.3 87.5 C 121.7 87.2 123.1 86.9 124.5 86.7 C 125.9 86.6 127.2 89.5 128.8 86.4 C 130.4 83.3 131.8 75.1 134.4 68.3 C 137.0 61.6 140.7 51.7 144.3 46.0 C 148.0 40.3 152.7 35.5 156.3 34.0 C 159.8 32.6 163.5 33.9 165.4 37.3 C 167.3 40.8 168.2 47.6 167.7 54.5 C 167.2 61.4 164.2 71.7 162.4 78.5 C 160.6 85.4 157.1 92.2 156.7 95.5 C 156.3 98.9 158.9 97.4 160.0 98.3 C 161.0 99.3 162.0 100.3 162.9 101.4 C 163.9 102.5 164.7 103.6 165.6 104.8 C 166.4 106.0 167.2 107.2 167.9 108.4 C 168.6 109.6 169.2 110.9 169.8 112.2 C 170.4 113.5 167.1 115.7 171.4 116.2 C 175.6 116.7 187.3 114.7 195.2 115.2 C 203.0 115.6 212.4 116.8 218.3 118.8 C 224.3 120.8 229.2 124.2 230.7 127.2 C 232.1 130.2 230.7 134.2 227.0 136.9 C 223.4 139.6 216.2 142.2 209.0 143.5 C 201.8 144.8 190.2 144.4 183.8 144.7 C 177.5 145.1 173.2 144.8 170.7 145.6 C 168.3 146.4 169.6 148.2 169.0 149.5 C 168.4 150.8 167.7 152.0 166.9 153.2 C 166.1 154.4 165.3 155.6 164.5 156.7 C 163.6 157.8 162.6 158.9 161.7 160.0 C 160.7 161.0 159.3 161.6 158.6 162.9 C 157.8 164.3 155.9 163.3 157.1 168.2 C 158.3 173.1 163.8 184.6 165.6 192.3 C 167.3 200.0 168.3 208.8 167.7 214.4 C 167.1 220.0 164.8 224.7 162.1 226.1 C 159.3 227.4 154.8 226.0 151.0 222.4 C 147.3 218.9 142.7 211.9 139.5 205.0 C 136.2 198.0 133.5 186.1 131.4 180.8 C 129.3 175.6 128.4 174.8 126.9 173.5 C 125.5 172.2 124.1 173.2 122.7 173.0 C 121.3 172.7 119.9 172.4 118.5 172.1 C 117.1 171.7 115.8 171.2 114.4 170.7 Z"></path>
+      </svg>
+      <p class="mood-hero-label">今日的心情</p>
+      <p class="mood-hero-word" id="mood-hero-word">心情還不錯</p>
+      <p class="mood-hero-date" id="mood-hero-date">這份平靜值得被珍惜</p>
     </div>
 
-    <!-- 我的入住紀錄 section title -->
-    <div class="section-header" style="margin-top:8px;margin-bottom:12px">
-      <p class="section-title">我的入住紀錄</p>
+    <!-- 時間軸：合併留言本與行李寄放紀錄 -->
+    <div class="section-header" style="margin-top:20px;margin-bottom:12px">
+      <p class="section-title">我的入住動態</p>
     </div>
-
-    <!-- 合併卡：連續入住 + 三個統計 -->
-    <div class="card" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:18px 20px;margin-bottom:12px">
-      <div class="streak-inner" style="margin-bottom:16px">
-        <div>
-          <p class="streak-label">連續入住</p>
-          <p class="streak-count">🌸 5 晚</p>
-        </div>
-        <div class="streak-days" id="streak-days"><div class="streak-day done">M</div><div class="streak-day done">T</div><div class="streak-day done">W</div><div class="streak-day done">T</div><div class="streak-day done">F</div><div class="streak-day pending">S</div><div class="streak-day pending">S</div></div>
-      </div>
-      <div style="height:1px;background:rgba(255,255,255,.1);margin:0 0 16px"></div>
-      <div class="stats-row" style="margin:0">
-        <div class="stat-card">
-          <p class="stat-value">78<span class="stat-unit">%</span></p>
-          <p class="stat-label">心情指數</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-value">70<span class="stat-unit">%</span></p>
-          <p class="stat-label">本週狀態</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-value">22<span class="stat-unit"> 晚</span></p>
-          <p class="stat-label">本月陪伴</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 入住趨勢折線圖 -->
-    <div class="card" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:18px;padding:18px 20px">
-      <div class="chart-header">
-        <div>
-          <p class="chart-title">入住趨勢</p>
-          <p class="chart-subtitle">過去七晚</p>
-        </div>
-        <div class="chart-toggles">
-          <button class="chart-toggle active" id="toggle-mood" onclick="setChartMode(&#39;score&#39;)">心情</button>
-          <button class="chart-toggle" id="toggle-stress" onclick="setChartMode(&#39;stress&#39;)">壓力</button>
-        </div>
-      </div>
-      <div class="chart-wrap" id="chart-wrap">
-      <svg viewBox="0 0 376 148" width="100%" style="overflow:visible;display:block">
-        <defs>
-          <lineargradient id="cg_score" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgba(255,255,255,1)" stop-opacity=".18"></stop>
-            <stop offset="100%" stop-color="rgba(255,255,255,1)" stop-opacity="0"></stop>
-          </lineargradient>
-        </defs>
-        <path d="M 0.00 48.00 C 26.32 48.00,36.35 55.00,62.67 55.00 C 88.99 55.00,99.01 40.00,125.33 40.00 C 151.65 40.00,161.68 42.00,188.00 42.00 C 214.32 42.00,224.35 28.00,250.67 28.00 C 276.99 28.00,287.01 35.00,313.33 35.00 C 339.65 35.00,349.68 32.00,376.00 32.00 L 376.00 120 L 0 120 Z" fill="url(#cg_score)" stroke="none"></path>
-        <path d="M 0.00 48.00 C 26.32 48.00,36.35 55.00,62.67 55.00 C 88.99 55.00,99.01 40.00,125.33 40.00 C 151.65 40.00,161.68 42.00,188.00 42.00 C 214.32 42.00,224.35 28.00,250.67 28.00 C 276.99 28.00,287.01 35.00,313.33 35.00 C 339.65 35.00,349.68 32.00,376.00 32.00" fill="none" stroke="rgba(255,255,255,0.90)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-        <circle cx="0.00" cy="48.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Mon&#39;,62)" onmouseleave="hideTip()"></circle><circle cx="62.67" cy="55.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Tue&#39;,55)" onmouseleave="hideTip()"></circle><circle cx="125.33" cy="40.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Wed&#39;,70)" onmouseleave="hideTip()"></circle><circle cx="188.00" cy="42.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Thu&#39;,68)" onmouseleave="hideTip()"></circle><circle cx="250.67" cy="28.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Fri&#39;,82)" onmouseleave="hideTip()"></circle><circle cx="313.33" cy="35.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Sat&#39;,75)" onmouseleave="hideTip()"></circle><circle cx="376.00" cy="32.00" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot" onmouseenter="showTip(event,&#39;Sun&#39;,78)" onmouseleave="hideTip()"></circle><text x="0.00" y="140" text-anchor="middle" class="chart-label">Mon</text><text x="62.67" y="140" text-anchor="middle" class="chart-label">Tue</text><text x="125.33" y="140" text-anchor="middle" class="chart-label">Wed</text><text x="188.00" y="140" text-anchor="middle" class="chart-label">Thu</text><text x="250.67" y="140" text-anchor="middle" class="chart-label">Fri</text><text x="313.33" y="140" text-anchor="middle" class="chart-label">Sat</text><text x="376.00" y="140" text-anchor="middle" class="chart-label">Sun</text>
-      </svg><div class="chart-tooltip" id="chart-tooltip"></div></div>
-    </div>
+    <div class="timeline-list" id="timeline-list"><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">8月1日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">🔎</span><div><p class="timeline-title">失物招領</p><p class="timeline-sub">希望練習</p></div></div></div><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">8月1日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">🧺</span><div><p class="timeline-title">情緒洗衣房</p><p class="timeline-sub">煩躁練習</p></div></div></div><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">7月31日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">📖</span><div><p class="timeline-title">留言本</p><p class="timeline-sub">TGIF TGIF!</p></div></div></div><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">7月31日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">🧳</span><div><p class="timeline-title">行李寄放</p><p class="timeline-sub">寄放了 2 件事</p></div></div></div><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">7月30日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">🧳</span><div><p class="timeline-title">行李寄放</p><p class="timeline-sub">寄放了 3 件事</p></div></div></div><div class="timeline-row"><div class="timeline-dates"><span class="timeline-date-main">7月27日</span></div><div class="timeline-connector"><span class="timeline-dot"></span><span class="timeline-line"></span></div><div class="timeline-card"><span class="timeline-icon-circle">📖</span><div><p class="timeline-title">留言本</p><p class="timeline-sub">happy monday?</p></div></div></div></div>
   </div>
 
   <!-- Bottom nav -->
@@ -1075,25 +1085,25 @@
         <p class="lz-section-title">情緒洗衣房</p>
         <p class="lz-section-sub">交給洗衣房，洗淨你的複雜情緒</p>
         <div class="lz-card-grid">
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;fannao&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7" stroke-width="1.5"></circle><path d="M8 13c1-1 2-1 3 0s2 1 3 0s2-1 3 0" stroke-width="1.1"></path></svg>
-            <span class="lz-card-emotion">煩躁</span><span class="lz-card-wash">輕柔漂洗</span><span class="lz-card-duration">5-15分・冥想練習</span>
+            <span class="lz-card-emotion">煩躁</span><span class="lz-card-wash">輕柔漂洗</span><span class="lz-card-duration">81秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;fennu&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7" stroke-width="1.5"></circle><path d="M9 10a4 4 0 1 1 -1.6 6.2" stroke-width="1.2"></path><path d="M6.6 14.8l0.8 2 2-0.9" stroke-width="1.1"></path></svg>
-            <span class="lz-card-emotion">憤怒</span><span class="lz-card-wash">強力脫水</span><span class="lz-card-duration">10分・冥想練習</span>
+            <span class="lz-card-emotion">憤怒</span><span class="lz-card-wash">強力脫水</span><span class="lz-card-duration">80秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;weiqu&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7" stroke-width="1.5"></circle><circle cx="9.5" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle><circle cx="14.5" cy="12.5" r="0.9" fill="currentColor" stroke="none"></circle><path d="M8.5 16c1-0.8 1.8-0.8 3 0s2 0.8 3 0" stroke-width="1.1"></path></svg>
-            <span class="lz-card-emotion">委屈</span><span class="lz-card-wash">溫水浸泡</span><span class="lz-card-duration">10分・冥想練習</span>
+            <span class="lz-card-emotion">委屈</span><span class="lz-card-wash">溫水浸泡</span><span class="lz-card-duration">81秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;jiaolv&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7" stroke-width="1.5"></circle><path d="M12.6 9.8l-2.3 3.8h2l-1 3.6 3.3-4.4h-2.2z" fill="currentColor" stroke="none"></path></svg>
-            <span class="lz-card-emotion">焦慮</span><span class="lz-card-wash">快洗</span><span class="lz-card-duration">5-10分・冥想練習</span>
+            <span class="lz-card-emotion">焦慮</span><span class="lz-card-wash">快洗</span><span class="lz-card-duration">80秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;gudu&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a1.6 1.6 0 1 1 1.3 2.5L12 8" stroke-width="1.4"></path><path d="M12 8l8 5H4z" stroke-width="1.4"></path><line x1="7" y1="13" x2="17" y2="13" stroke-width="1"></line></svg>
-            <span class="lz-card-emotion">孤獨</span><span class="lz-card-wash">靜置晾乾</span><span class="lz-card-duration">15分・冥想練習</span>
+            <span class="lz-card-emotion">孤獨</span><span class="lz-card-wash">靜置晾乾</span><span class="lz-card-duration">80秒・呼吸練習</span>
           </div>
         </div>
       </div>
@@ -1113,25 +1123,25 @@
         <p class="lz-section-title">失物招領</p>
         <p class="lz-section-sub">在失物招領，找回你遺忘的美好</p>
         <div class="lz-card-grid">
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;wending&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2" stroke-width="1.4"></circle><line x1="12" y1="9" x2="12" y2="17" stroke-width="1.4"></line><path d="M6.5 13a5.5 5.5 0 0 0 11 0" stroke-width="1.3"></path><line x1="8" y1="11" x2="16" y2="11" stroke-width="1.1"></line></svg>
-            <span class="lz-card-emotion">穩定</span><span class="lz-card-wash">重拾內在穩定</span><span class="lz-card-duration">15分・冥想練習</span>
+            <span class="lz-card-emotion">穩定</span><span class="lz-card-wash">重拾內在穩定</span><span class="lz-card-duration">80秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;zixin&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="17" x2="20" y2="17" stroke-width="1.4"></line><path d="M7 17a5 5 0 0 1 10 0" stroke-width="1.4"></path><line x1="12" y1="10" x2="12" y2="7" stroke-width="1.3"></line><line x1="7.5" y1="12.5" x2="6" y2="11" stroke-width="1.2"></line><line x1="16.5" y1="12.5" x2="18" y2="11" stroke-width="1.2"></line></svg>
-            <span class="lz-card-emotion">自信</span><span class="lz-card-wash">喚醒自信</span><span class="lz-card-duration">10分・冥想練習</span>
+            <span class="lz-card-emotion">自信</span><span class="lz-card-wash">喚醒自信</span><span class="lz-card-duration">72秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;guanai&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19c-3.5-2.6-7-5.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 3.7-3.5 6.4-7 9Z" stroke-width="1.4"></path></svg>
-            <span class="lz-card-emotion">關愛</span><span class="lz-card-wash">自我關愛</span><span class="lz-card-duration">10分・冥想練習</span>
+            <span class="lz-card-emotion">關愛</span><span class="lz-card-wash">自我關愛</span><span class="lz-card-duration">72秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;jiena&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8c-2 2-2 6 0 8" stroke-width="1.3"></path><path d="M17.5 8c2 2 2 6 0 8" stroke-width="1.3"></path><circle cx="12" cy="12" r="2.3" stroke-width="1.3"></circle></svg>
-            <span class="lz-card-emotion">接納</span><span class="lz-card-wash">接納自我</span><span class="lz-card-duration">10-15分・冥想練習</span>
+            <span class="lz-card-emotion">接納</span><span class="lz-card-wash">接納自我</span><span class="lz-card-duration">80秒・呼吸練習</span>
           </div>
-          <div class="lz-card">
+          <div class="lz-card" onclick="openPractice(&#39;xiwang&#39;)">
             <svg class="lz-card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v-7" stroke-width="1.4"></path><path d="M12 12c0-3-2.2-5-5.2-5c0 3 2.2 5 5.2 5Z" stroke-width="1.2"></path><path d="M12 12c0-3 2.2-5 5.2-5c0 3-2.2 5-5.2 5Z" stroke-width="1.2"></path></svg>
-            <span class="lz-card-emotion">希望</span><span class="lz-card-wash">抱持希望</span><span class="lz-card-duration">15分・冥想練習</span>
+            <span class="lz-card-emotion">希望</span><span class="lz-card-wash">抱持希望</span><span class="lz-card-duration">72秒・呼吸練習</span>
           </div>
         </div>
       </div>
@@ -1170,8 +1180,28 @@
     </div>
   </div>
 
+  <!-- ── 冥想/呼吸練習 overlay ─────────────────────────────────────────────── -->
+  <div id="practice-overlay" class="">
+    <div class="practice-progress-track"><div class="practice-progress-fill" id="practice-progress-fill"></div></div>
+    <div class="practice-header">
+      <button class="lz-nav-btn" onclick="closePractice()">‹</button>
+      <span class="practice-title" id="practice-title"></span>
+      <div style="width:36px"></div>
+    </div>
+    <div class="practice-stage">
+      <p class="practice-intro" id="practice-intro"></p>
+      <div class="practice-circle-wrap">
+        <div class="practice-circle" id="practice-circle"></div>
+      </div>
+      <p class="practice-cue" id="practice-cue"></p>
+      <p class="practice-closing" id="practice-closing"></p>
+      <button class="practice-done-btn" onclick="closePractice()">完成</button>
+    </div>
+  </div>
+
   <!-- ── Orb emotion screen ──────────────────────────────────────────────── -->
   <div id="orb-overlay" class="">
+    <div class="orb-glow" id="orb-glow"></div>
     <div class="orb-nav">
       <button class="orb-nav-btn" onclick="hideOrbScreen()">‹</button>
       <span class="orb-title">情緒</span>
@@ -1359,15 +1389,7 @@
     { id: 'stressed',  label: '壓力' },
   ];
 
-  const WEEKLY_DATA = [
-    { day: 'Mon', score: 62, stress: 45 },
-    { day: 'Tue', score: 55, stress: 60 },
-    { day: 'Wed', score: 70, stress: 38 },
-    { day: 'Thu', score: 68, stress: 42 },
-    { day: 'Fri', score: 82, stress: 28 },
-    { day: 'Sat', score: 75, stress: 30 },
-    { day: 'Sun', score: 78, stress: 25 },
-  ];
+  let WEEKLY_DATA = [];
 
   const INSIGHTS = [
     { svgIcon: 'leaf',    tag: '房務提醒', tagColor: 'rgba(255,255,255,0.80)', tagBg: 'rgba(255,255,255,0.12)',
@@ -1384,16 +1406,14 @@
   const RESOURCES = [
     { key: 'journal',   label: '留言本',    desc: '寫下今晚想說的話' },
     { key: 'luggage',   label: '行李寄放',  desc: '寄放今天放不下的事' },
-    { key: 'laundry',   label: '情緒洗衣房', desc: '洗去負面情緒，還你乾淨心情' },
-    { key: 'lostfound', label: '失物招領',  desc: '提醒你帶走昨天的笑容' },
+    { key: 'laundry',   label: '情緒洗衣房', desc: '洗去你的負面情緒' },
+    { key: 'lostfound', label: '失物招領',  desc: '為自己找回一點鼓勵與力量' },
   ];
 
-  const STREAK_DAYS = ['M','T','W','T','F','S','S'];
-  const STREAK_DONE = new Set([0,1,2,3,4]);
+  // 連續入住天數改由 heartinn_checkins 真實計算，見 renderProfileStats()
 
   // ── State ─────────────────────────────────────────────────────────────────
   let selectedEmotion = null;
-  let chartMode       = 'score';
   let insightIndex    = 0;
 
   // ── Nav icons ─────────────────────────────────────────────────────────────
@@ -1424,33 +1444,41 @@
     document.getElementById('checkin-success').style.display = 'block';
   }
 
-  // ── Streak ────────────────────────────────────────────────────────────────
-  function renderStreakDays() {
-    document.getElementById('streak-days').innerHTML = STREAK_DAYS.map((d, i) =>
-      `<div class="streak-day ${STREAK_DONE.has(i) ? 'done' : 'pending'}">${d}</div>`
-    ).join('');
-  }
+  // ── Streak（見下方 renderProfileStats，統一從真實入住紀錄計算） ───────────────
 
   // ── Chart ─────────────────────────────────────────────────────────────────
-  function setChartMode(mode) {
-    chartMode = mode;
-    document.getElementById('toggle-mood').classList.toggle('active',   mode === 'score');
-    document.getElementById('toggle-stress').classList.toggle('active', mode === 'stress');
-    renderChart();
-  }
-
   function renderChart() {
-    const W = 376, H = 120, padY = 10;
+    const wrap = document.getElementById('chart-wrap');
+    if (!wrap) return;
     const n = WEEKLY_DATA.length;
-    const xStep = W / (n - 1);
-    // Both modes use white — mood is brighter, stress is warm cream
-    const color = chartMode === 'score' ? 'rgba(255,255,255,0.90)' : 'rgba(240,224,205,0.85)';
-    const gid   = 'cg_' + chartMode;
 
+    if (n === 0) {
+      wrap.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,.4);font-size:13px;font-family:\'DM Sans\',sans-serif;padding:30px 0;">開始你的第一次入住，<br>這裡會記錄你的心情走勢</p>';
+      return;
+    }
+
+    const W = 376, H = 120, padY = 10;
+    const color = 'rgba(255,255,255,0.90)';
+    const gid   = 'cg_score';
+
+    if (n === 1) {
+      const y = padY + (1 - WEEKLY_DATA[0].score / 100) * (H - padY * 2);
+      wrap.innerHTML = `
+        <svg viewBox="0 0 ${W} ${H+28}" width="100%" style="overflow:visible;display:block">
+          <circle cx="${W/2}" cy="${r(y)}" r="3.5" fill="rgba(255,255,255,0.92)" class="chart-dot"
+            onmouseenter="showTip(event,'${WEEKLY_DATA[0].day}',${WEEKLY_DATA[0].score})" onmouseleave="hideTip()"/>
+          <text x="${W/2}" y="${H+20}" text-anchor="middle" class="chart-label">${WEEKLY_DATA[0].day}</text>
+        </svg>`;
+      const tooltip = document.getElementById('chart-tooltip');
+      wrap.appendChild(tooltip);
+      return;
+    }
+
+    const xStep = W / (n - 1);
     const pts = WEEKLY_DATA.map((d, i) => ({
       x: i * xStep,
-      y: padY + (1 - d[chartMode] / 100) * (H - padY * 2),
-      v: d[chartMode], day: d.day,
+      y: padY + (1 - d.score / 100) * (H - padY * 2),
+      v: d.score, day: d.day,
     }));
 
     let line = `M ${r(pts[0].x)} ${r(pts[0].y)}`;
@@ -1460,7 +1488,7 @@
     }
     const area = `${line} L ${r(pts[n-1].x)} ${H} L 0 ${H} Z`;
 
-    const dotColor = chartMode === 'score' ? 'rgba(255,255,255,0.92)' : 'rgba(240,224,205,0.88)';
+    const dotColor = 'rgba(255,255,255,0.92)';
     const dots = pts.map(p =>
       `<circle cx="${r(p.x)}" cy="${r(p.y)}" r="3.5" fill="${dotColor}" class="chart-dot"
          onmouseenter="showTip(event,'${p.day}',${p.v})" onmouseleave="hideTip()"/>`
@@ -1484,7 +1512,6 @@
         ${dots}${labels}
       </svg>`;
 
-    const wrap    = document.getElementById('chart-wrap');
     const tooltip = document.getElementById('chart-tooltip');
     wrap.innerHTML = svg;
     wrap.appendChild(tooltip);
@@ -1505,8 +1532,10 @@
 
   // ── Insights ──────────────────────────────────────────────────────────────
   function renderInsight() {
+    const iconEl = document.getElementById('insight-icon');
+    if (!iconEl) return;
     const c = INSIGHTS[insightIndex];
-    document.getElementById('insight-icon').innerHTML       = INSIGHT_ICONS[c.svgIcon];
+    iconEl.innerHTML       = INSIGHT_ICONS[c.svgIcon];
     document.getElementById('insight-headline').textContent = c.headline;
     document.getElementById('insight-text').textContent     = c.body;
 
@@ -1712,6 +1741,7 @@
     });
     const target = document.getElementById('view-' + view);
     if (target) target.style.display = 'flex';
+    if (view === 'profile' && typeof renderProfileStats === 'function') renderProfileStats();
     // Hero only visible on 大廳
     const hero = document.querySelector('.page-hero');
     if (hero) hero.style.display = view === 'main' ? '' : 'none';
@@ -1761,7 +1791,9 @@
   }
   function markCheckedInToday() {
     try { localStorage.setItem('heartinn_last_checkin', getAppDateStr()); } catch(e) {}
+    hiRecordCheckin(hiV);
     updateHeroCheckinState();
+    renderProfileStats();
   }
   function updateHeroCheckinState() {
     var headline = document.querySelector('.today-headline');
@@ -1769,7 +1801,7 @@
     var btn = document.querySelector('.today-cta');
     if (!headline || !sub || !btn) return;
     if (isCheckedInToday()) {
-      headline.innerHTML = '晚安，Caressa<br>今晚已經入住了';
+      headline.innerHTML = '晚安 Caressa';
       sub.textContent = '想重新選擇心情，也可以再開一次門';
       btn.textContent = '調整今晚的心情';
     } else {
@@ -1779,14 +1811,273 @@
     }
   }
 
+  // ── 入住紀錄（房客資料頁面所有統計數字的單一資料來源） ─────────────────────
+  function shiftDateStr(dateStr, delta) {
+    var d = new Date(dateStr + 'T12:00:00');
+    d.setDate(d.getDate() + delta);
+    var y = d.getFullYear(), m = d.getMonth() + 1, day = d.getDate();
+    function p(n){ return n < 10 ? '0' + n : n; }
+    return y + '-' + p(m) + '-' + p(day);
+  }
+  function hiLoadCheckins() {
+    try { return JSON.parse(localStorage.getItem('heartinn_checkins') || '[]'); } catch(e) { return []; }
+  }
+  function hiSaveCheckins(list) {
+    try { localStorage.setItem('heartinn_checkins', JSON.stringify(list)); } catch(e) {}
+  }
+  function hiRecordCheckin(mood) {
+    var list = hiLoadCheckins();
+    var date = getAppDateStr();
+    var moodLabel = (typeof hiLabels !== 'undefined') ? hiLabels[Math.round((mood/100)*6)] : '';
+    var existing = null;
+    for (var i = 0; i < list.length; i++) { if (list[i].date === date) { existing = list[i]; break; } }
+    if (existing) { existing.mood = mood; existing.moodLabel = moodLabel; }
+    else { list.push({ date: date, mood: mood, moodLabel: moodLabel }); }
+    list.sort(function(a,b){ return a.date < b.date ? -1 : (a.date > b.date ? 1 : 0); });
+    hiSaveCheckins(list);
+  }
+  function computeStreak(list) {
+    if (!list.length) return 0;
+    var streak = 1;
+    for (var i = list.length - 1; i > 0; i--) {
+      var cur = new Date(list[i].date + 'T12:00:00');
+      var prev = new Date(list[i-1].date + 'T12:00:00');
+      var diffDays = Math.round((cur - prev) / 86400000);
+      if (diffDays === 1) { streak++; } else { break; }
+    }
+    return streak;
+  }
+  function computeMoodIndex(list) {
+    if (!list.length) return null;
+    var recent = list.slice(-7);
+    var sum = 0;
+    for (var i = 0; i < recent.length; i++) sum += recent[i].mood;
+    var avg = sum / recent.length;
+    return (typeof hiLabels !== 'undefined') ? hiLabels[Math.round((avg/100)*6)] : Math.round(avg);
+  }
+  function computeWeekStatus(list) {
+    var todayStr = getAppDateStr();
+    var dateSet = {};
+    list.forEach(function(c){ dateSet[c.date] = true; });
+    var count = 0;
+    for (var i = 0; i < 7; i++) {
+      if (dateSet[shiftDateStr(todayStr, -i)]) count++;
+    }
+    return count;
+  }
+  function computeMonthCompanion(list) {
+    var ym = getAppDateStr().slice(0, 7);
+    return list.filter(function(c){ return c.date.indexOf(ym) === 0; }).length;
+  }
+  function renderProfileStats() {
+    var list = hiLoadCheckins();
+
+    // 左上角月份年份
+    var monthEl0 = document.getElementById('profile-month-label');
+    if (monthEl0) {
+      var now = new Date();
+      monthEl0.textContent = now.getFullYear() + ' ' + (now.getMonth() + 1) + '月';
+    }
+
+    // 連續入住
+    var streakEl = document.getElementById('streak-count');
+    if (streakEl) streakEl.textContent = '🌸 ' + computeStreak(list) + ' 晚';
+
+    // 一週打卡點（本週一到週日，依真實紀錄標記 done/pending）
+    var daysEl = document.getElementById('streak-days');
+    if (daysEl) {
+      var todayStr = getAppDateStr();
+      var todayDate = new Date(todayStr + 'T12:00:00');
+      var dow = todayDate.getDay();
+      var mondayOffset = (dow === 0) ? -6 : (1 - dow);
+      var labels = ['M','T','W','T','F','S','S'];
+      var dateSet = {};
+      list.forEach(function(c){ dateSet[c.date] = true; });
+      var html = '';
+      for (var i = 0; i < 7; i++) {
+        var ds = shiftDateStr(todayStr, mondayOffset + i);
+        var done = !!dateSet[ds];
+        html += '<div class="streak-day ' + (done ? 'done' : 'pending') + '">' + labels[i] + '</div>';
+      }
+      daysEl.innerHTML = html;
+    }
+
+    // 三項統計
+    var moodIdx = computeMoodIndex(list);
+    var moodEl = document.getElementById('stat-mood-index');
+    if (moodEl) {
+      moodEl.classList.toggle('stat-value-text', moodIdx !== null);
+      moodEl.textContent = (moodIdx === null ? '–' : moodIdx);
+    }
+    var weekEl = document.getElementById('stat-week-status');
+    if (weekEl) weekEl.innerHTML = (list.length === 0 ? '–' : computeWeekStatus(list) + '<span class="stat-unit"> 晚</span>');
+    var monthEl = document.getElementById('stat-month-companion');
+    if (monthEl) monthEl.innerHTML = (list.length === 0 ? '–' : computeMonthCompanion(list) + '<span class="stat-unit"> 晚</span>');
+
+    // 空中花園說明文字
+    var gardenEl = document.getElementById('garden-caption');
+    if (gardenEl) {
+      var streak = computeStreak(list);
+      gardenEl.textContent = list.length === 0
+        ? '還沒有入住紀錄・今晚開始第一次入住吧'
+        : '已連續入住 ' + streak + ' 晚・花園正在生長中';
+    }
+
+    // 入住趨勢圖表（最近 7 筆真實紀錄）
+    var dayLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    WEEKLY_DATA = list.slice(-7).map(function(c) {
+      var d = new Date(c.date + 'T12:00:00');
+      return { day: dayLabels[d.getDay()], score: c.mood };
+    });
+    if (typeof renderChart === 'function') renderChart();
+
+    renderWeekStrip(list);
+    renderMoodHero(list);
+    renderTimeline();
+  }
+
+  // ── 週曆選日條（陽春版，純視覺，不可互動） ───────────────────────────────
+  function renderWeekStrip(list) {
+    var wrap = document.getElementById('week-strip');
+    if (!wrap) return;
+    var dateSet = {};
+    list.forEach(function(c){ dateSet[c.date] = true; });
+    var todayStr = getAppDateStr();
+    var todayDate = new Date(todayStr + 'T12:00:00');
+    var dow = todayDate.getDay();
+    var mondayOffset = (dow === 0) ? -6 : (1 - dow);
+    var dowLabels = ['MON','TUE','WED','THU','FRI','SAT','SUN'];
+    var html = '';
+    for (var i = 0; i < 7; i++) {
+      var ds = shiftDateStr(todayStr, mondayOffset + i);
+      var d = new Date(ds + 'T12:00:00');
+      var isToday = ds === todayStr;
+      var has = !!dateSet[ds];
+      html += '<div class="week-strip-day' + (isToday ? ' today' : '') + '">' +
+        '<span class="week-strip-num">' + d.getDate() + '</span>' +
+        '<span class="week-strip-dow">' + dowLabels[i] + '</span>' +
+        '<span class="week-strip-dot' + (has ? ' has' : '') + '"></span>' +
+        '</div>';
+    }
+    wrap.innerHTML = html;
+  }
+
+  // ── 心情大卡片：最近一次的心情描述詞，背景色沿用情緒 orb 同一組色票 ─────────
+  var HERO_ENCOURAGEMENTS = {
+    heavy: ['今晚，放心把重量交給我們～', '今天辛苦了，慢慢來也沒關係'],
+    low:   ['先停留休息一下，不必急著前進', '低落的時候，更需要溫柔對待自己'],
+    mid:   ['這份平靜值得被珍惜', '記得把今天的好心情，一起帶回房間'],
+    good:  ['希望這份輕盈，能成為你明天繼續前行的力量']
+  };
+  function heroGetMoodKey(v) {
+    if (v < 30) return 'heavy';
+    if (v < 50) return 'low';
+    if (v < 70) return 'mid';
+    return 'good';
+  }
+  function heroPickEncouragement(v) {
+    var arr = HERO_ENCOURAGEMENTS[heroGetMoodKey(v)];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  function renderMoodHero(list) {
+    var card = document.getElementById('mood-hero-card');
+    var wordEl = document.getElementById('mood-hero-word');
+    var dateEl = document.getElementById('mood-hero-date');
+    var flower = document.getElementById('mood-hero-flower');
+    if (!card || !wordEl || !dateEl) return;
+    if (!list.length) {
+      card.style.background = 'rgba(255,255,255,.08)';
+      if (flower) flower.style.opacity = '0';
+      wordEl.textContent = '還沒有入住紀錄';
+      dateEl.textContent = '';
+      return;
+    }
+    var latest = list[list.length - 1];
+    var isToday = latest.date === getAppDateStr();
+    if (!isToday) {
+      card.style.background = 'rgba(255,255,255,.08)';
+      if (flower) flower.style.opacity = '0';
+      wordEl.textContent = '今天還沒有入住';
+      dateEl.textContent = '去大廳看看現在的心情吧';
+      return;
+    }
+    wordEl.textContent = latest.moodLabel || '';
+    dateEl.textContent = heroPickEncouragement(latest.mood);
+    if (typeof hiColor === 'function') {
+      var c1 = hiColor(latest.mood, 0);
+      card.style.background = 'radial-gradient(circle at 88% 92%, ' + hiRgba(c1, .22) + ' 0%, rgba(255,255,255,.05) 55%)';
+      if (flower) { flower.style.color = c1; flower.style.opacity = '.4'; }
+    }
+  }
+
+  // ── 時間軸：合併留言本日記＋行李寄放紀錄，依真實時間排序 ─────────────────
+  function renderTimeline() {
+    var list = document.getElementById('timeline-list');
+    if (!list) return;
+    var entries = [];
+    try {
+      JSON.parse(localStorage.getItem('heartinn_journal_entries') || '[]').forEach(function(e){
+        entries.push({ id: Number(e.id) || 0, time: e.time, icon: '📖', title: '留言本', sub: (e.title || e.mood) });
+      });
+    } catch(e) {}
+    try {
+      JSON.parse(localStorage.getItem('heartinn_luggage_cards') || '[]').forEach(function(c){
+        var n = (c.itemIds || []).length;
+        entries.push({ id: Number(c.id) || 0, time: c.time, icon: '🧳', title: '行李寄放', sub: '寄放了 ' + n + ' 件事' });
+      });
+    } catch(e) {}
+    try {
+      JSON.parse(localStorage.getItem('heartinn_practice_log') || '[]').forEach(function(p){
+        var isLaundry = p.room === 'laundry';
+        entries.push({ id: Number(p.id) || 0, time: p.time, icon: isLaundry ? '🧺' : '🔎', title: isLaundry ? '情緒洗衣房' : '失物招領', sub: p.title + '練習' });
+      });
+    } catch(e) {}
+    entries.sort(function(a,b){ return b.id - a.id; });
+    entries = entries.slice(0, 10);
+    list.innerHTML = '';
+    if (!entries.length) {
+      var ep = document.createElement('p');
+      ep.className = 'timeline-empty';
+      ep.textContent = '還沒有任何紀錄';
+      list.appendChild(ep);
+      return;
+    }
+    entries.forEach(function(item) {
+      var dateLabel = (item.time || '').split(' ')[0]; // 例：7月30日
+
+      var row = document.createElement('div');
+      row.className = 'timeline-row';
+
+      var dateCol = document.createElement('div'); dateCol.className = 'timeline-dates';
+      var dateMain = document.createElement('span'); dateMain.className = 'timeline-date-main'; dateMain.textContent = dateLabel;
+      dateCol.appendChild(dateMain);
+
+      var connector = document.createElement('div'); connector.className = 'timeline-connector';
+      var dot = document.createElement('span'); dot.className = 'timeline-dot';
+      var line = document.createElement('span'); line.className = 'timeline-line';
+      connector.appendChild(dot); connector.appendChild(line);
+
+      var card = document.createElement('div'); card.className = 'timeline-card';
+      var iconCircle = document.createElement('span'); iconCircle.className = 'timeline-icon-circle'; iconCircle.textContent = item.icon;
+      var textWrap = document.createElement('div');
+      var title = document.createElement('p'); title.className = 'timeline-title'; title.textContent = item.title;
+      var sub = document.createElement('p'); sub.className = 'timeline-sub'; sub.textContent = item.sub;
+      textWrap.appendChild(title); textWrap.appendChild(sub);
+      card.appendChild(iconCircle); card.appendChild(textWrap);
+
+      row.appendChild(dateCol); row.appendChild(connector); row.appendChild(card);
+      list.appendChild(row);
+    });
+  }
+
   function dismissDoorAndGo(key) {
     var o = document.getElementById('door-overlay');
+    if (key === 'journal') { openJournal(); setTimeout(function(){ o.style.display='none'; o.classList.remove('go'); }, 420); return; }
+    if (key === 'luggage') { openLuggage(); setTimeout(function(){ o.style.display='none'; o.classList.remove('go'); }, 420); return; }
+    if (key === 'laundry') { openLaundry(); setTimeout(function(){ o.style.display='none'; o.classList.remove('go'); }, 420); return; }
+    if (key === 'lostfound') { openLostFound(); setTimeout(function(){ o.style.display='none'; o.classList.remove('go'); }, 420); return; }
     o.style.display = 'none';
     o.classList.remove('go');
-    if (key === 'journal') { setTimeout(openJournal, 300); return; }
-    if (key === 'luggage') { setTimeout(openLuggage, 300); return; }
-    if (key === 'laundry') { setTimeout(openLaundry, 300); return; }
-    if (key === 'lostfound') { setTimeout(openLostFound, 300); return; }
     // Switch to 客房服務 view (view-history)
     var historyBtn = document.querySelector('.nav-btn[onclick*="history"]');
     if (historyBtn) setNav(historyBtn, 'history');
@@ -1864,6 +2155,10 @@
     document.getElementById('hiPm').setAttribute('d',hiPath(hiV,1.25,hiRot*.84));
     document.getElementById('hiPo').setAttribute('d',hiPath(hiV,1.52,hiRot*.68));
   }
+  function hiRgba(rgbStr, alpha) {
+    var m = rgbStr.match(/\d+/g);
+    return 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',' + alpha + ')';
+  }
   function hiColors(v){
     var l=hiColor(v,0),m=hiColor(v,1);
     document.getElementById('hiGc2').setAttribute('stop-color',l);
@@ -1874,6 +2169,10 @@
     document.getElementById('hiLabel').textContent=hiLabels[Math.round((v/100)*6)];
     document.getElementById('hiSlider').style.accentColor=l;
     document.getElementById('hiSlider').style.color=l;
+    var glow = document.getElementById('orb-glow');
+    if (glow) {
+      glow.style.background = 'radial-gradient(circle at 50% 42%, ' + hiRgba(l,.16) + ' 0%, ' + hiRgba(m,.08) + ' 45%, transparent 72%)';
+    }
   }
   function hiLoop(){hiRot+=.0022;hiDraw();hiAnimId=requestAnimationFrame(hiLoop);}
 
@@ -2455,6 +2754,101 @@
   });
 
   // ── 情緒洗衣房 ────────────────────────────────────────────────────────────
+  // ── 冥想/呼吸練習（套用於情緒洗衣房＋失物招領全部10張卡片） ─────────────────
+  var PRACTICE_CONTENT = {
+    // 憤怒／焦慮：情緒較激動，拉長吐氣時間，真正有生理放鬆效果
+    fennu:   { title:'憤怒', intro:'憤怒需要一個出口，讓呼吸幫你把力氣慢慢放掉。', closing:'情緒被好好接住了，辛苦了。', inhale:4, exhale:6, cycles:8 },
+    jiaolv:  { title:'焦慮', intro:'跟著呼吸的節奏，把緊繃一點一點放開。', closing:'你已經很努力了，慢慢來。', inhale:4, exhale:6, cycles:8 },
+    // 煩躁／委屈：情緒中等強度，吐氣略長於吸氣
+    fannao:  { title:'煩躁', intro:'讓思緒慢下來，跟著呼吸，把煩躁放輕。', closing:'謝謝你願意停下來，喘口氣。', inhale:4, exhale:5, cycles:9 },
+    weiqu:   { title:'委屈', intro:'把說不出口的委屈，交給這幾次呼吸。', closing:'你的感受，值得被溫柔對待。', inhale:4, exhale:5, cycles:9 },
+    // 孤獨／穩定／接納：情緒平穩，均勻的呼吸節奏
+    gudu:    { title:'孤獨', intro:'即使一個人，也可以被自己好好陪伴。', closing:'謝謝你，陪自己走過這一刻。', inhale:4, exhale:4, cycles:10 },
+    wending: { title:'穩定', intro:'讓呼吸成為此刻最穩定的依靠。', closing:'你正在慢慢找回自己的重心。', inhale:4, exhale:4, cycles:10 },
+    jiena:   { title:'接納', intro:'不用急著變好，先允許自己是現在這樣。', closing:'謝謝你，願意接納此刻的自己。', inhale:4, exhale:4, cycles:10 },
+    // 自信／希望／關愛：情緒正向輕盈，節奏可以稍快
+    zixin:   { title:'自信', intro:'每一次呼吸，都是重新相信自己的機會。', closing:'那份自信，一直都在你身上。', inhale:3, exhale:3, cycles:12 },
+    xiwang:  { title:'希望', intro:'讓呼吸帶來一點光，一點點也好。', closing:'希望，已經在你心裡發芽了。', inhale:3, exhale:3, cycles:12 },
+    guanai:  { title:'關愛', intro:'把這幾次呼吸，當作對自己的一次擁抱。', closing:'你值得被好好愛著，包括被自己愛著。', inhale:3, exhale:3, cycles:12 }
+  };
+  var practiceTimer = null;
+
+  var PRACTICE_ROOM = {
+    fannao:'laundry', fennu:'laundry', weiqu:'laundry', jiaolv:'laundry', gudu:'laundry',
+    wending:'lostfound', zixin:'lostfound', guanai:'lostfound', jiena:'lostfound', xiwang:'lostfound'
+  };
+  function practiceFormatNow() {
+    var d = new Date();
+    var m = d.getMonth() + 1, day = d.getDate(), h = d.getHours(), mi = d.getMinutes();
+    function p(n){ return n < 10 ? '0' + n : n; }
+    return m + '月' + day + '日 ' + p(h) + ':' + p(mi);
+  }
+  function logPracticeUse(key, data) {
+    try {
+      var log = JSON.parse(localStorage.getItem('heartinn_practice_log') || '[]');
+      log.push({ id: Date.now().toString(), time: practiceFormatNow(), room: PRACTICE_ROOM[key], title: data.title });
+      localStorage.setItem('heartinn_practice_log', JSON.stringify(log));
+    } catch(e) {}
+  }
+
+  function openPractice(key) {
+    var data = PRACTICE_CONTENT[key];
+    if (!data) return;
+    logPracticeUse(key, data);
+    var overlay = document.getElementById('practice-overlay');
+    var circle = document.getElementById('practice-circle');
+    var cue = document.getElementById('practice-cue');
+    var fill = document.getElementById('practice-progress-fill');
+    overlay.classList.remove('done');
+    document.getElementById('practice-title').textContent = data.title;
+    document.getElementById('practice-intro').textContent = data.intro;
+    document.getElementById('practice-closing').textContent = data.closing;
+    cue.textContent = '';
+    circle.classList.remove('inhale', 'exhale');
+    overlay.classList.add('visible');
+
+    // 頂部進度條：隨呼吸練習總時長線性填滿
+    var totalMs = data.cycles * (data.inhale + data.exhale) * 1000;
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    void fill.offsetWidth; // 強制重繪，確保寬度重置後才開始動畫
+    requestAnimationFrame(function() {
+      fill.style.transition = 'width ' + totalMs + 'ms linear';
+      fill.style.width = '100%';
+    });
+
+    var count = 0;
+    function breatheCycle() {
+      if (!overlay.classList.contains('visible')) return;
+      if (count >= data.cycles) {
+        overlay.classList.add('done');
+        return;
+      }
+      circle.classList.remove('exhale');
+      circle.classList.add('inhale');
+      circle.style.transitionDuration = data.inhale + 's';
+      cue.textContent = '吸氣⋯';
+      practiceTimer = setTimeout(function() {
+        circle.classList.remove('inhale');
+        circle.classList.add('exhale');
+        circle.style.transitionDuration = data.exhale + 's';
+        cue.textContent = '吐氣⋯';
+        practiceTimer = setTimeout(function() {
+          count++;
+          breatheCycle();
+        }, data.exhale * 1000);
+      }, data.inhale * 1000);
+    }
+    breatheCycle();
+  }
+
+  function closePractice() {
+    document.getElementById('practice-overlay').classList.remove('visible');
+    clearTimeout(practiceTimer);
+    var fill = document.getElementById('practice-progress-fill');
+    if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  }
+
   function openLaundry() {
     var o = document.getElementById('lz-overlay');
     if (o.classList.contains('visible')) return;
@@ -2508,12 +2902,12 @@
 
   // ── Desktop phone scaler ───────────────────────────────────────────────────
   function scalePhone() {
-    if (window.innerWidth < 500) { document.getElementById('app').style.zoom = ''; return; }
+    if (window.innerWidth < 500) { document.getElementById('app').style.transform = ''; return; }
     var pad = 80;
     var scaleX = (window.innerWidth - pad) / 390;
     var scaleY = (window.innerHeight - pad) / 844;
     var scale = Math.min(scaleX, scaleY, 1);
-    document.getElementById('app').style.zoom = scale;
+    document.getElementById('app').style.transform = 'translate(-50%, -50%) scale(' + scale + ')';
   }
   window.addEventListener('resize', scalePhone);
   scalePhone();
@@ -2608,8 +3002,8 @@
 
   // ── Boot ──────────────────────────────────────────────────────────────────
   renderNavIcons();
-  renderStreakDays();
-  renderChart();
+  renderProfileStats();
+  updateHeroCheckinState();
   renderInsight();
   startInsightAuto();
   renderResources();
